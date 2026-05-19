@@ -1,26 +1,64 @@
-# Titanic Survival Prediction (ML Classification Project)
+# Titanic Survival Prediction
 
-## Overview
-An end-to-end machine learning project predicting passenger survival on the Titanic 
-using the Kaggle Titanic dataset. Covers data cleaning, exploratory data analysis, 
-feature engineering, and multi-model comparison.
+An end-to-end machine learning classification project built using the Kaggle Titanic dataset.  
+The project covers data cleaning, exploratory data analysis, feature engineering, model training, evaluation, and deployment using Streamlit.
 
-## Key Finding
-Gender was by far the strongest predictor of survival (coefficient = 2.48), more 
-than twice as influential as passenger class. The model independently rediscovered 
-the historical "women and children first" protocol purely from raw passenger data, 
-without being explicitly told.
+## Live Demo
+
+Streamlit App:  
+https://titanic-eda-shlok.streamlit.app
+
+## Project Overview
+
+The goal of this project was to predict whether a passenger survived the Titanic disaster using features such as passenger class, sex, age, fare, and family relationships onboard.
+
+I trained and compared multiple classification models and deployed the final model as an interactive web app using Streamlit.
+
+## Key Insight
+
+The model identified sex as the strongest predictor of survival. Female passengers had a significantly higher chance of survival, reflecting the historical "women and children first" evacuation policy.
+
+Passenger class was also strongly linked to survival probability, showing how social and economic status affected access to lifeboats.
+
+## App Screenshots
+
+### Main Interface
+<img width="1857" height="877" alt="image" src="https://github.com/user-attachments/assets/bf02fdef-728a-404f-84e4-80c29f950081" />
+
+
+### Prediction Example
+<img width="620" height="775" alt="image" src="https://github.com/user-attachments/assets/42e4c0e8-967f-44b7-ab39-150c4461f2b0" />
+<img width="602" height="791" alt="image" src="https://github.com/user-attachments/assets/b48676c8-67c4-43ae-8f5f-432bbfef6bec" />
+
 
 ## What I Did
-- **Data Cleaning**: Handled missing values (Age filled with median, Cabin dropped 
-  due to 77% missing data)
-- **Exploratory Data Analysis**: Visualised survival rates by gender, passenger 
-  class, age group and overall distribution
-- **Feature Engineering**: Label encoded Sex column, selected most predictive 
-  features
-- **Model Training**: Trained and compared 3 classification algorithms
-- **Model Evaluation**: Evaluated using accuracy, precision, recall, F1-score and 
-  confusion matrix
+
+### Data Cleaning
+- Filled missing values in the `Age` column using the median
+- Dropped the `Cabin` column because most values were missing
+- Selected the most useful features for prediction
+
+### Exploratory Data Analysis
+- Analysed survival trends across passenger class, sex, and age
+- Visualised distributions and correlations using matplotlib and seaborn
+
+### Feature Engineering
+- Encoded categorical features such as `Sex`
+- Prepared the dataset for machine learning models
+
+### Model Training
+Trained and compared:
+- Logistic Regression
+- Random Forest Classifier
+- Decision Tree Classifier
+
+### Model Evaluation
+Evaluated models using:
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
 
 ## Results
 
@@ -30,43 +68,45 @@ without being explicitly told.
 | Random Forest | 79.3% |
 | Decision Tree | 77.7% |
 
+**Best Performing Model:** Logistic Regression
 
+## Logistic Regression Classification Report
 
-
-**Best Model: Logistic Regression (81% accuracy)**
-
-
-![Confusion Matrix](logistic_regression_confusion_matrix.png)
-![Feature Coefficients](logistic_regression_feature_importance.png)
-
-### Classification Report — Logistic Regression
 | Class | Precision | Recall | F1-Score |
 |---|---|---|---|
 | Did not survive | 0.82 | 0.87 | 0.84 |
 | Survived | 0.79 | 0.73 | 0.76 |
 
+## What the Model Learned
 
-### What the Model Learned
-- **Sex (coefficient: +2.48)**: Being female was the single strongest survival 
-  predictor — the model learned the "women and children first" protocol from data alone
-- **Pclass (coefficient: -1.02)**: Higher class number (lower social class) strongly 
-  decreased survival probability — wealth determined lifeboat access
-- **Age (coefficient: ~0.0)**: Minimal independent effect once sex and class are 
-  accounted for
+- `Sex` was the strongest predictor of survival
+- Lower passenger classes had lower survival rates
+- Age had a weaker independent effect after accounting for sex and class
 
 ## Tech Stack
-- Python, pandas, numpy, matplotlib, seaborn
-- scikit-learn (LogisticRegression, RandomForestClassifier, DecisionTreeClassifier)
+
+- Python
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
+- Streamlit
 
 ## Project Structure
-```
+
+```text
 titanic/
 │
+├── app.py
+├── model.pkl
 ├── train.csv
-├── titanic.py
-└── README.md
+├── requirements.txt
+├── README.md
+└── titanic.py
 ```
 
 ## Dataset
-[Kaggle Titanic Competition](https://www.kaggle.com/competitions/titanic)
 
+Kaggle Titanic Competition:
+https://www.kaggle.com/competitions/titanic
